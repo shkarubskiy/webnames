@@ -102,3 +102,37 @@ body {
   background-color: green;
   color: white;
 }
+
+.popup__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #6a5ae0;
+  opacity: 0.8;
+}
+
+.popup {
+  position: absolute;
+  top: calc(100vh / 2 - 160px);
+  left: calc(100vw / 2 - 160px);
+  width: 320px;
+  height: 320px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 16px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}

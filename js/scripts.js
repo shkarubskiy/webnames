@@ -1,9 +1,19 @@
 import words from "./words.js";
-import { getRandomInt } from "./utility.js";
+import { getRandomInt, getQR } from "./utility.js";
 
 const cards = document.querySelectorAll(".card");
+const qr = document.querySelector(".popup__image");
+const button = document.querySelector(".button");
+const popup = document.querySelector(".popup__container");
 
-function fillCards(data) {
+button.addEventListener("click", () => {
+  popup.classList.remove("hidden");
+});
+popup.addEventListener("click", () => {
+  popup.classList.add("hidden");
+});
+
+function startGame(data) {
   cards.forEach((card, i) => {
     card.textContent = data.words[i];
     card.addEventListener("click", () => {
@@ -16,12 +26,6 @@ function fillCards(data) {
         card.classList.add("card-black");
     });
   });
-}
-
-function getParams() {
-  let url = window.location.search;
-  url = url.replace("?", "");
-  return url;
 }
 
 function gameData() {
@@ -108,4 +112,9 @@ function gameData() {
 }
 
 const data = new gameData();
-fillCards(data);
+startGame(data);
+qr.src = getQR(
+  data.keys.join(""),
+  "http://192.168.35.110:5500/cap.html",
+  data.turnOrder
+);
