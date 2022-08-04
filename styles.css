@@ -53,4 +53,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 250ms linear;
+}
+
+.card-red {
+  background-color: red;
+  color: white;
+}
+.card-blue {
+  background-color: blue;
+  color: white;
+}
+.card-black {
+  background-color: black;
+  color: white;
+}
+.card-green {
+  background-color: green;
+  color: white;
 }
