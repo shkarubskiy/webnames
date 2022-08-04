@@ -1,10 +1,12 @@
+import words from "./words.js";
+import { getRandomInt } from "./utility.js";
+
 const cards = document.querySelectorAll(".card");
 
 function fillCards(data) {
   cards.forEach((card, i) => {
-    card.textContent = data.keys[i];
+    card.textContent = data.words[i];
     card.addEventListener("click", () => {
-      console.log();
       if (data.keys[card.dataset.index] == "00")
         card.classList.add("card-green");
       if (data.keys[card.dataset.index] == "01")
@@ -21,11 +23,6 @@ function getParams() {
   url = url.replace("?", "");
   return url;
 }
-
-// function getRandomInt(min, max) {
-//   let rnd = min - 0.5 + Math.random() * (max - min + 1);
-//   return Math.round(rnd);
-// }
 
 function gameData() {
   this.getTurnOrder = () => {
@@ -93,8 +90,21 @@ function gameData() {
     }
     return data;
   };
+
+  this.getWords = (source) => {
+    let buffer = source.slice();
+    let result = [];
+    for (let i = 0; i < 25; i++) {
+      let rnd = getRandomInt(0, buffer.length - 1);
+      result.push(buffer[rnd]);
+      buffer.splice(rnd, 1);
+    }
+    return result;
+  };
+
   this.turnOrder = this.getTurnOrder();
   this.keys = this.getKeys();
+  this.words = this.getWords(words.basic);
 }
 
 const data = new gameData();
