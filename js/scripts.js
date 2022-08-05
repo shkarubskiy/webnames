@@ -38,7 +38,7 @@ function startGame(data) {
   });
   let url = getQR(
     data.keys.join(""),
-    "http://192.168.35.110:5500/cap.html", // window.location.href.replace("index.", "cap"),
+    window.location.href.replace("index.", "cap"),
     data.turnOrder
   );
   qr.src = url;
