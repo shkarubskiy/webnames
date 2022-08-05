@@ -2,7 +2,9 @@ const gameData = {
   turnOrder: null,
   keys: [],
   classes: [],
+  id: null,
 };
+const title = document.querySelector(".header__title");
 const cards = document.querySelectorAll(".card");
 
 function getParams() {
@@ -31,6 +33,17 @@ function assignCards() {
   });
 }
 
+function getId() {
+  gameData.id = gameData.keys
+    .split("")
+    .map((x, i) => Number(x) * i)
+    .reduce((x, y) => x + y);
+}
+
 getParams();
+console.log(gameData);
+getId();
 convertParams();
 assignCards();
+title.textContent = gameData.id;
+title.classList.add(gameData.turnOrder == 1 ? "title-red" : "title-blue");

@@ -1,6 +1,7 @@
 import words from "./words.js";
 import { getRandomInt, getQR } from "./utility.js";
 
+const title = document.querySelector(".header__title");
 const cards = document.querySelectorAll(".card");
 const qr = document.querySelector(".popup__image");
 const button = document.querySelector(".button");
@@ -94,7 +95,6 @@ function gameData() {
     }
     return data;
   };
-
   this.getWords = (source) => {
     let buffer = source.slice();
     let result = [];
@@ -105,10 +105,19 @@ function gameData() {
     }
     return result;
   };
+  this.getId = () => {
+    return this.keys
+      .slice()
+      .join("")
+      .split("")
+      .map((x, i) => Number(x) * i)
+      .reduce((x, y) => x + y);
+  };
 
   this.turnOrder = this.getTurnOrder();
   this.keys = this.getKeys();
   this.words = this.getWords(words.basic);
+  this.id = this.getId();
 }
 
 const data = new gameData();
@@ -118,3 +127,4 @@ qr.src = getQR(
   "http://192.168.35.110:5500/cap.html",
   data.turnOrder
 );
+title.textContent = data.id;
