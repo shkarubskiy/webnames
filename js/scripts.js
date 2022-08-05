@@ -106,7 +106,7 @@ function GameData() {
       "01",
       "11",
     ];
-    let data = this.turnOrder == 0 ? dataR : dataB;
+    let data = this.turnOrder == 1 ? dataR : dataB;
     for (let i = data.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [data[i], data[j]] = [data[j], data[i]];
