@@ -89,6 +89,11 @@ body {
   margin-bottom: 16px;
 }
 
+.popup__link {
+  margin-top: 16px;
+  display: none;
+}
+
 .main {
   width: 100%;
   height: calc(100% - 64px);
@@ -110,20 +115,17 @@ body {
 }
 
 .card-red {
-  background-color: red;
-  color: white;
+  background-color: #ff7d94;
 }
 .card-blue {
-  background-color: blue;
-  color: white;
+  background-color: #7d9aff;
 }
 .card-black {
   background-color: black;
   color: white;
 }
-.card-green {
-  background-color: green;
-  color: white;
+.card-yellow {
+  background-color: #ffe078;
 }
 
 .hidden {

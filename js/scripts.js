@@ -2,13 +2,21 @@ import words from "./words.js";
 import { getRandomInt, getQR } from "./utility.js";
 
 const subtitle = document.querySelector(".header__subtitle");
-const cards = document.querySelectorAll(".card");
-const qr = document.querySelector(".popup__image");
-const button = document.querySelector(".button");
+const buttonCap = document.querySelector(".button-cap");
+const buttonHelp = document.querySelector(".button-help");
+const buttonReset = document.querySelector(".button-reset");
 const popup = document.querySelector(".popup");
+const qr = document.querySelector(".popup__image");
+const link = document.querySelector(".popup__link");
+const cards = document.querySelectorAll(".card");
 
-button.addEventListener("click", () => {
+buttonCap.addEventListener("click", () => {
   popup.classList.remove("hidden");
+});
+buttonHelp.addEventListener("click", () => {});
+buttonReset.addEventListener("click", () => {
+  data = new GameData();
+  startGame(data);
 });
 popup.addEventListener("click", () => {
   popup.classList.add("hidden");
@@ -17,9 +25,10 @@ popup.addEventListener("click", () => {
 function startGame(data) {
   cards.forEach((card, i) => {
     card.textContent = data.words[i];
+    card.className = "card";
     card.addEventListener("click", () => {
       if (data.keys[card.dataset.index] == "00")
-        card.classList.add("card-green");
+        card.classList.add("card-yellow");
       if (data.keys[card.dataset.index] == "01")
         card.classList.add("card-blue");
       if (data.keys[card.dataset.index] == "10") card.classList.add("card-red");
@@ -27,9 +36,17 @@ function startGame(data) {
         card.classList.add("card-black");
     });
   });
+  let url = getQR(
+    data.keys.join(""),
+    "http://192.168.35.110:5500/cap.html", // window.location.href.replace("index.", "cap"),
+    data.turnOrder
+  );
+  qr.src = url;
+  link.href = "";
+  subtitle.textContent = `ID ${data.id}`;
 }
 
-function gameData() {
+function GameData() {
   this.getTurnOrder = () => {
     return Math.round(0.5 + Math.random() * 2);
   };
@@ -120,11 +137,5 @@ function gameData() {
   this.id = this.getId();
 }
 
-const data = new gameData();
+let data = new GameData();
 startGame(data);
-qr.src = getQR(
-  data.keys.join(""),
-  "http://192.168.35.110:5500/cap.html",
-  data.turnOrder
-);
-subtitle.textContent = `ID ${data.id}`;
