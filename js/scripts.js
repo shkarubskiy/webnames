@@ -38,7 +38,7 @@ function startGame(data) {
   });
   let url = getQR(
     data.keys.join(""),
-    window.location.href.replace("index.", "cap"),
+    `${window.location.href}cap.html`,
     data.turnOrder
   );
   qr.src = url;
@@ -139,3 +139,5 @@ function GameData() {
 
 let data = new GameData();
 startGame(data);
+
+console.log(`${window.location.href}cap.html`);
