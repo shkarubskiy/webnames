@@ -1,7 +1,7 @@
 import words from "./words.js";
 import { getRandomInt, getQR } from "./utility.js";
 
-const title = document.querySelector(".header__title");
+const subtitle = document.querySelector(".header__subtitle");
 const cards = document.querySelectorAll(".card");
 const qr = document.querySelector(".popup__image");
 const button = document.querySelector(".button");
@@ -127,4 +127,4 @@ qr.src = getQR(
   "http://192.168.35.110:5500/cap.html",
   data.turnOrder
 );
-title.textContent = data.id;
+subtitle.textContent = `ID ${data.id}`;

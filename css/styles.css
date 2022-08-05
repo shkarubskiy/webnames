@@ -17,23 +17,35 @@ body {
   color: white;
 }
 
-.header {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
 }
 
-.header__button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  padding: 0px 16px;
+.button {
+  padding: 8px 16px;
   font-family: inherit;
   font-size: 16px;
   border-radius: 16px;
   background-color: white;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header__title {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.header__button {
+  margin-left: 16px;
 }
 
 .main {
@@ -105,4 +117,21 @@ body {
 
 .hidden {
   display: none;
+}
+
+@media only screen and (orientation: portrait) {
+  .wrapper {
+    display: none;
+  }
+  .warning {
+    display: block;
+  }
+}
+@media only screen and (orientation: landscape) {
+  .wrapper {
+    display: block;
+  }
+  .warning {
+    display: none;
+  }
 }
