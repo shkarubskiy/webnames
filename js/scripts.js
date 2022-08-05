@@ -52,7 +52,7 @@ function GameData() {
     return Math.round(0.5 + Math.random() * 2);
   };
   this.getKeys = () => {
-    let dataR = [
+    let dataB = [
       "00",
       "00",
       "00",
@@ -79,7 +79,7 @@ function GameData() {
       "01",
       "11",
     ];
-    let dataB = [
+    let dataR = [
       "00",
       "00",
       "00",
