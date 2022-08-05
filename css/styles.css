@@ -133,6 +133,9 @@ body {
   justify-content: center;
 }
 
+.cap__board {
+}
+
 .hidden {
   display: none;
 }
