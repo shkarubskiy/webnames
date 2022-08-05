@@ -5,7 +5,7 @@ const subtitle = document.querySelector(".header__subtitle");
 const cards = document.querySelectorAll(".card");
 const qr = document.querySelector(".popup__image");
 const button = document.querySelector(".button");
-const popup = document.querySelector(".popup__container");
+const popup = document.querySelector(".popup");
 
 button.addEventListener("click", () => {
   popup.classList.remove("hidden");
