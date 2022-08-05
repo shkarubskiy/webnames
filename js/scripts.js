@@ -15,6 +15,7 @@ buttonCap.addEventListener("click", () => {
 });
 buttonHelp.addEventListener("click", () => {});
 buttonReset.addEventListener("click", () => {
+  data = null;
   data = new GameData();
   startGame(data);
 });
@@ -26,7 +27,7 @@ function startGame(data) {
   cards.forEach((card, i) => {
     card.textContent = data.words[i];
     card.className = "card";
-    card.addEventListener("click", () => {
+    card.onclick = () => {
       if (data.keys[card.dataset.index] == "00")
         card.classList.add("card-yellow");
       if (data.keys[card.dataset.index] == "01")
@@ -34,7 +35,7 @@ function startGame(data) {
       if (data.keys[card.dataset.index] == "10") card.classList.add("card-red");
       if (data.keys[card.dataset.index] == "11")
         card.classList.add("card-black");
-    });
+    };
   });
   let url = getQR(
     data.keys.join(""),
@@ -139,5 +140,3 @@ function GameData() {
 
 let data = new GameData();
 startGame(data);
-
-console.log(`${window.location.href}cap.html`);
