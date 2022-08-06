@@ -140,6 +140,12 @@ body {
   display: none;
 }
 
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
 @media only screen and (orientation: portrait) {
   .wrapper {
     display: none;
