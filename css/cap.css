@@ -125,6 +125,31 @@ body {
   height: 100%;
 }
 
+.warning {
+  height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .hidden {
   display: none;
+}
+
+@media only screen and (orientation: portrait) {
+  .wrapper {
+    display: block;
+  }
+  .warning {
+    display: none;
+  }
+}
+@media only screen and (orientation: landscape) {
+  .wrapper {
+    display: none;
+  }
+  .warning {
+    display: flex;
+  }
 }
